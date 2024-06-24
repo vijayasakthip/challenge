@@ -1,0 +1,9 @@
+#log:hover{
+    background-color:hsl(180, 66%, 49%);
+    color: white;
+}
+#sign:hover{
+    background-color: blue;
+    color: white;
+}
+
