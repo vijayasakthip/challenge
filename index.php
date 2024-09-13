@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,234 +14,36 @@
   <title>Frontend Mentor | Shortly URL shortening API Challenge</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
-
-
-
-  <style>
-.navbarscustom{
-  background-color: white;
-}
-@media screen and (max-width:500px){
-  .navbarscustom{
-    background-color:hsl(257, 27%, 26%);
+<style>
+  .computerimage{
+  height:300px;
+  width:600px;
   }
-}
-
- 
-  .searchbar{
-    width: 400px;
-    margin-right: 40px;
+  @media(max-width:769px){
+    .computerimage{
+    height:300px;
+    width:700px;
   }
-@media (max-width:575px){
-.searchbar{
-  width: 450px;
-  margin-left: 30px;
-  margin-bottom: 10px;
-}
-}
-@media (max-width:500px){
-  .searchbar{
-  width:300px;
-  margin-left: 25px;
-  margin-bottom: 10px;
-}
-}
-
-
-#button{
-  width: 100px;
-  margin-left: 10px;
-
-}
-
-@media (max-width:620px){
-#button{
-width: 100px;
-margin-left: 30px;
-}
-}
-
-@media (max-width:590px){
-#button{
-width: 100px;
-margin-left: 50px;
-}
-}
-
-@media (max-width:575px){
-#button{
-width: 450px;
-margin-left: 30px;
-
-}
-}
-
-@media(max-width:500px){
-  #button{
+  }
+  @media(max-width:426px){
+    .computerimage{
+    height:300px;
+    width:350px;
+  }
+  }
+  @media(max-width:376px){
+    .computerimage{
+    height:300px;
     width:300px;
-    margin-left:25px ;
   }
-}
-
-
-.imageback{
-  background-color:hsl(257, 27%, 26%);
-  height: 150px;
-  width: 90%;
- margin-left: 65px;
- position: relative;
- top: 50px;
-  
-}
-
-@media (max-width:1100px){
-.imageback{
-  margin: 0px;
-  width: 100%;
-}
-  
-}
-@media (max-width:575px){
-.imageback{
-  margin: 0px;
-  width: 100%;
-}
-  
-}
-
-@media (max-width:500px){
-.imageback{
-  margin: 0px;
-  width: 100%;
-}
-  
-}
-.borderline{
-  border: 1px solid white;
-  background-color: hsl(180, 66%, 49%);
-  width: 80%;
-  height: 20px;
-  position:absolute;
-  top:160%;
-  left: 10%;
-}
-@media (max-width:991px){
-  .borderline{
-border-left: 1px solid hsl(180, 66%, 49%);
-position: absolute;
-top: 240%;
-left: 50%;
-width: 1%;
-height: 800px;
   }
-}
-@media (max-width:800px){
-  .borderline{
-border-left: 1px solid hsl(180, 66%, 49%);
-position: absolute;
-top: 240%;
-left: 51%;
-width: 1%;
-height: 800px;
+  @media(max-width:320px){
+    .computerimage{
+    height:300px;
+    width:280px;
   }
-}
-  @media (max-width:640px){
-  .borderline{
-border-left: 1px solid hsl(180, 66%, 49%);
-position: absolute;
-top: 230%;
-left: 52%;
-width: 1%;
-height: 800px;
   }
-}
-
-@media (max-width:500px){
-  .borderline{
-border-left: 1px solid hsl(180, 66%, 49%);
-position: absolute;
-top: 175%;
-left: 51%;
-width: 1%;
-height: 900px;
-  }
-}
-
-
-
-.icon1{
-  border-radius: 50%;
-  position: relative;
-  bottom: 30px;
-  left: 20px;
-}
-@media(max-width:991px){
-  .icon1{
-    position: relative;
-    bottom: 30px;
-    left: 47%;
-  }
-  
-}
-@media(max-width:500px){
-  .icon1{
-    position: relative;
-    bottom: 30px;
-    left: 42%;
-  }
-  
-}
-
-
-.icon2{
-  border-radius: 50%;
-  position: relative;
-  bottom: 30px;
-  left: 25px;
-}
-@media(max-width:991px){
-  .icon2{
-    position: relative;
-    bottom: 30px;
-    left: 47%;
-  }
-}
-@media(max-width:500px){
-  .icon2{
-    position: relative;
-    bottom: 30px;
-    left: 42%;
-  }
-  
-}
-
-.icon3{
-  border-radius: 50%;
-  position: relative;
-  bottom: 30px;
-  left: 30px;
-}
-@media(max-width:991px){
-  .icon3{
-    position: relative;
-    bottom: 30px;
-    left: 47%;
-  }
-}
-@media(max-width:500px){
-  .icon3{
-    position: relative;
-    bottom: 30px;
-    left: 42%;
-  }
-  
-}
-
-
-
-  </style>
-
-
+</style>
 </head>
 <body >
 
@@ -279,17 +86,30 @@ height: 900px;
           </div>
           <div class="collapse navbar-collapse justify-content-end mx-5  navbarscustom " id="navbarNav">
             <ul class="navbar-nav">
-              
-              <li class="nav-item">
-                <a class="nav-link" style="text-align: center;" href="#" >
+              <?php
+if(isset($_SESSION['userid']) && $_SESSION['userid'] !=''){?>
+<li class="nav-item">
+                <a class="nav-link" style="text-align: center;" href="Logout.php" >
+                  <p class="btn" id="log">Logout</p>
+                </a>
+              </li>
+<?php
+}
+else{?>
+ <li class="nav-item">
+                <a class="nav-link" style="text-align: center;" href="login.php" >
                   <p class="btn" id="log">Login</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" style="text-align: center;" href="#">
+                <a class="nav-link" style="text-align: center;" href="signup.php">
                   <p class="btn" style=" background-color:hsl(180, 66%, 49%);" id="sign">Sign up</p>
                 </a>
               </li>
+<?php
+}
+              ?>
+             
              
               
             </ul>
@@ -316,7 +136,7 @@ height: 900px;
   </div>
 
   <div class="col-lg-6 d-flex justify-content-end">
-<img src="images/illustration-working.png" alt="" height="300" width="300">
+<img src="images/illustration-working.png" alt="" class="computerimage" >
   </div>
 </div>
 
@@ -325,11 +145,11 @@ height: 900px;
    
     <div  class="imageback d-flex justify-content-center align-items-center" style="background-image:url(bg-shorten-desktop.png); ">
       <div class="row ">
-        <div class="col-sm-8">
+        <div class="col-md-8">
           <input class="form-control searchbar " type="search" placeholder="Shorten your link..." aria-label="Search" ">
 
         </div>
-        <div class="col-sm-4">
+        <div class="col-md-4">
           <button class="btn "  id="button" type="submit"  style=" background-color:hsl(180, 66%, 49%);">Shorten it!</button>
         </div>
       </div>
@@ -448,7 +268,7 @@ height: 900px;
     <p>Branded Links</p>
     <p>Analytics</p>
   </div>
-  <div class="col-sm-12 col-lg-3" style="text-align: center;">
+  <div class="col-sm-12 col-lg-2" style="text-align: center;">
     <h4>Resources</h4>
     <p>Blog</p>
     <p>Developers</p>
@@ -462,7 +282,7 @@ height: 900px;
     <p>Careers</p>
     <p>Contact</p>
   </div>
-  <div class="col-sm-12 col-lg-2" style="text-align: center;">
+  <div class="col-sm-12 col-lg-3" style="text-align: center;">
 <img src="images/icon-facebook.png" alt="" class="me-3">
 <img src="images/icon-twitter.png" alt="" class="me-3">
 <img src="images/icon-pinterest.png" alt="" class="me-3">
@@ -476,6 +296,7 @@ height: 900px;
  
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </html>
 
 
